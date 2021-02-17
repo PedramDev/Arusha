@@ -1,0 +1,79 @@
+﻿@model Arusha.Domain.Order
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingMobile" class="control-label"></label>
+                <input asp-for="BillingMobile" class="form-control" />
+                <span asp-validation-for="BillingMobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingName" class="control-label"></label>
+                <input asp-for="BillingName" class="form-control" />
+                <span asp-validation-for="BillingName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingFamily" class="control-label"></label>
+                <input asp-for="BillingFamily" class="form-control" />
+                <span asp-validation-for="BillingFamily" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingEmail" class="control-label"></label>
+                <input asp-for="BillingEmail" class="form-control" />
+                <span asp-validation-for="BillingEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingGender" class="control-label"></label>
+                <select asp-for="BillingGender" class="form-control"></select>
+                <span asp-validation-for="BillingGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingCost" class="control-label"></label>
+                <input asp-for="ShippingCost" class="form-control" />
+                <span asp-validation-for="ShippingCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingMethodId" class="control-label"></label>
+                <select asp-for="ShippingMethodId" class="form-control" asp-items="ViewBag.ShippingMethodId"></select>
+                <span asp-validation-for="ShippingMethodId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
