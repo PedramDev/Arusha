@@ -49,9 +49,9 @@ namespace Arusha.Web.Controllers
         // GET: OrderItems/Create
         public IActionResult Create()
         {
-            ViewData["OrderId"] = new SelectList(_context.Order, "Id", "Id");
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id");
-            ViewData["VariantId"] = new SelectList(_context.Variant, "Id", "Id");
+            ViewData["OrderId"] = new SelectList(_context.Order, nameof(Order.Id), nameof(Order.Id));
+            ViewData["ProductId"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.FullName));
+            ViewData["VariantId"] = new SelectList(_context.Variant, nameof(Variant.Id) , nameof(Variant.FullName));
             return View();
         }
 
@@ -68,9 +68,9 @@ namespace Arusha.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OrderId"] = new SelectList(_context.Order, "Id", "Id", orderItems.OrderId);
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id", orderItems.ProductId);
-            ViewData["VariantId"] = new SelectList(_context.Variant, "Id", "Id", orderItems.VariantId);
+            ViewData["OrderId"] = new SelectList(_context.Order, nameof(Order.Id), nameof(Order.Id), orderItems.OrderId);
+            ViewData["ProductId"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.FullName), orderItems.ProductId);
+            ViewData["VariantId"] = new SelectList(_context.Variant, nameof(Variant.Id), nameof(Variant.FullName), orderItems.VariantId);
             return View(orderItems);
         }
 
@@ -87,9 +87,9 @@ namespace Arusha.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["OrderId"] = new SelectList(_context.Order, "Id", "Id", orderItems.OrderId);
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id", orderItems.ProductId);
-            ViewData["VariantId"] = new SelectList(_context.Variant, "Id", "Id", orderItems.VariantId);
+            ViewData["OrderId"] = new SelectList(_context.Order, nameof(Order.Id), nameof(Order.Id), orderItems.OrderId);
+            ViewData["ProductId"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.FullName), orderItems.ProductId);
+            ViewData["VariantId"] = new SelectList(_context.Variant, nameof(Variant.Id), nameof(Variant.FullName), orderItems.VariantId);
             return View(orderItems);
         }
 
@@ -125,9 +125,9 @@ namespace Arusha.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OrderId"] = new SelectList(_context.Order, "Id", "Id", orderItems.OrderId);
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id", orderItems.ProductId);
-            ViewData["VariantId"] = new SelectList(_context.Variant, "Id", "Id", orderItems.VariantId);
+            ViewData["OrderId"] = new SelectList(_context.Order, nameof(Order.Id), nameof(Order.Id), orderItems.OrderId);
+            ViewData["ProductId"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.FullName), orderItems.ProductId);
+            ViewData["VariantId"] = new SelectList(_context.Variant, nameof(Variant.Id), nameof(Variant.FullName), orderItems.VariantId);
             return View(orderItems);
         }
 

@@ -48,8 +48,8 @@ namespace Arusha.Web.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["ShippingMethodId"] = new SelectList(_context.ShippingMethod, "Id", "Id");
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id");
+            ViewData["ShippingMethodId"] = new SelectList(_context.ShippingMethod, nameof(ShippingMethod.Id), nameof(ShippingMethod.Name));
+            ViewData["UserId"] = new SelectList(_context.User, nameof(Domain.User.Id), nameof(Domain.User.FullName));
             return View();
         }
 
@@ -66,8 +66,8 @@ namespace Arusha.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ShippingMethodId"] = new SelectList(_context.ShippingMethod, "Id", "Id", order.ShippingMethodId);
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id", order.UserId);
+            ViewData["ShippingMethodId"] = new SelectList(_context.ShippingMethod, nameof(ShippingMethod.Id), nameof(ShippingMethod.Name), order.ShippingMethodId);
+            ViewData["UserId"] = new SelectList(_context.User, nameof(Domain.User.Id), nameof(Domain.User.FullName), order.UserId);
             return View(order);
         }
 
@@ -84,8 +84,8 @@ namespace Arusha.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["ShippingMethodId"] = new SelectList(_context.ShippingMethod, "Id", "Id", order.ShippingMethodId);
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id", order.UserId);
+            ViewData["ShippingMethodId"] = new SelectList(_context.ShippingMethod, nameof(ShippingMethod.Id), nameof(ShippingMethod.Name), order.ShippingMethodId);
+            ViewData["UserId"] = new SelectList(_context.User, nameof(Domain.User.Id), nameof(Domain.User.FullName), order.UserId);
             return View(order);
         }
 
@@ -121,8 +121,8 @@ namespace Arusha.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ShippingMethodId"] = new SelectList(_context.ShippingMethod, "Id", "Id", order.ShippingMethodId);
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id", order.UserId);
+            ViewData["ShippingMethodId"] = new SelectList(_context.ShippingMethod, nameof(ShippingMethod.Id), nameof(ShippingMethod.Name), order.ShippingMethodId);
+            ViewData["UserId"] = new SelectList(_context.User, nameof(Domain.User.Id), nameof(Domain.User.FullName), order.UserId);
             return View(order);
         }
 

@@ -1,10 +1,10 @@
 ﻿@model Arusha.Domain.Variant
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "ثبت";
 }
 
-<h1>Create</h1>
+<h1>ثبت</h1>
 
 <h4>Variant</h4>
 <hr />
@@ -41,14 +41,14 @@
                 <select asp-for="ColorId" class ="form-control" asp-items="ViewBag.ColorId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="ثبت" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">بازگشت به لیست</a>
 </div>
 
 @section Scripts {

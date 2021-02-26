@@ -47,7 +47,7 @@ namespace Arusha.Web.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.FullName));
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace Arusha.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryId,Id")] Product product)
+        public async Task<IActionResult> Create([Bind("CategoryId,Id,Name")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +64,7 @@ namespace Arusha.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.FullName), product.CategoryId);
             return View(product);
         }
 
@@ -81,7 +81,7 @@ namespace Arusha.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.FullName), product.CategoryId);
             return View(product);
         }
 
@@ -90,7 +90,7 @@ namespace Arusha.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,Id")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,Id,Name")] Product product)
         {
             if (id != product.Id)
             {
@@ -117,7 +117,7 @@ namespace Arusha.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.FullName), product.CategoryId);
             return View(product);
         }
 

@@ -47,7 +47,7 @@ namespace Arusha.Web.Controllers
         // GET: Categories/Create
         public IActionResult Create()
         {
-            ViewData["ParentId"] = new SelectList(_context.Category, "Id", "Id");
+            ViewData["ParentId"] = new SelectList(_context.Category,nameof(Category.Id), nameof(Category.FullName));
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace Arusha.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParentId"] = new SelectList(_context.Category, "Id", "Id", category.ParentId);
+            ViewData["ParentId"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.FullName), category.ParentId);
             return View(category);
         }
 
@@ -81,7 +81,7 @@ namespace Arusha.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["ParentId"] = new SelectList(_context.Category, "Id", "Id", category.ParentId);
+            ViewData["ParentId"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.FullName), category.ParentId);
             return View(category);
         }
 
@@ -117,7 +117,7 @@ namespace Arusha.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParentId"] = new SelectList(_context.Category, "Id", "Id", category.ParentId);
+            ViewData["ParentId"] = new SelectList(_context.Category, nameof(Category.Id), nameof(Category.FullName), category.ParentId);
             return View(category);
         }
 

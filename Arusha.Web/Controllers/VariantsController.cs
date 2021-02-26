@@ -48,8 +48,8 @@ namespace Arusha.Web.Controllers
         // GET: Variants/Create
         public IActionResult Create()
         {
-            ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Id");
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id");
+            ViewData["ColorId"] = new SelectList(_context.Color, nameof(Color.Id), nameof(Color.FullName));
+            ViewData["ProductId"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.FullName));
             return View();
         }
 
@@ -66,8 +66,8 @@ namespace Arusha.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Id", variant.ColorId);
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id", variant.ProductId);
+            ViewData["ColorId"] = new SelectList(_context.Color, nameof(Color.Id), nameof(Color.FullName), variant.ColorId);
+            ViewData["ProductId"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.FullName), variant.ProductId);
             return View(variant);
         }
 
@@ -84,8 +84,8 @@ namespace Arusha.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Id", variant.ColorId);
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id", variant.ProductId);
+            ViewData["ColorId"] = new SelectList(_context.Color, nameof(Color.Id), nameof(Color.FullName), variant.ColorId);
+            ViewData["ProductId"] = new SelectList(_context.Product, nameof(Product.Id), nameof(Product.FullName), variant.ProductId);
             return View(variant);
         }
 
@@ -121,8 +121,8 @@ namespace Arusha.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Id", variant.ColorId);
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id", variant.ProductId);
+            ViewData["ColorId"] = new SelectList(_context.Color, nameof(Color.Id), nameof(Color.FullName), variant.ColorId);
+            ViewData["ProductId"] = new SelectList(_context.Product, nameof(Product.Id) , nameof(Product.FullName), variant.ProductId);
             return View(variant);
         }
 
